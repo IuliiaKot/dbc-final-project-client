@@ -6,27 +6,33 @@ class LogIn extends Component {
 
 sendData(e){
   e.preventDefault();
-  axios.post('http://localhost:8000/authenticate', querystring.stringify({email:"julia@gmail.com", password: "123456"}))
+  let params = {
+    email: this.refs.email.value,
+    password: this.refs.password.value
+  }
+  axios.post('http://localhost:8000/authenticate', querystring.stringify(params))
     .then(res => {
       sessionStorage.setItem('token', res.data.auth_token)
+      this.props.history.push('/pitches')
     })
-  let config = {
-    headers: {'Authorization': sessionStorage.token}
-  };
 
-   axios.get('http://localhost:8000/pitches', config)
-   .then(res => {
-     debugger
-   }) 
+  // let config = {
+  //   headers: {'Authorization': sessionStorage.token}
+  // };
+
+  //  axios.get('http://localhost:8000/pitches', config)
+  //  .then(res => {
+  //    debugger
+  //  }) 
 }  
 
   render(){
     return(
       <div>
         <form onSubmit={this.sendData.bind(this)}>
-          <input type="email" />
-          <input type="password"/>
-          <input type="submit" value="LogIN"/>
+          <input ref="email" type="email" />
+          <input ref="password" type="password"/>
+          <input type="submit" value="LogIn"/>
         </form>
       </div>
     )
