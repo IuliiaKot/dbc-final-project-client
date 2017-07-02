@@ -4,6 +4,7 @@ import './App.css';
 import LogIn from './LogIn'
 import Header from './Header';
 import Main from './Main';
+import {Container} from 'reactstrap';
 
 
 class App extends Component {
@@ -18,7 +19,9 @@ class App extends Component {
     return (
       <div>
         <Header/>
-        <Main />
+        <Container>
+          <Main />
+        </Container>
       </div>
     );
   }
