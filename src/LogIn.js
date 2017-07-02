@@ -15,15 +15,6 @@ sendData(e){
       sessionStorage.setItem('token', res.data.auth_token)
       this.props.history.push('/pitches')
     })
-
-  // let config = {
-  //   headers: {'Authorization': sessionStorage.token}
-  // };
-
-  //  axios.get('http://localhost:8000/pitches', config)
-  //  .then(res => {
-  //    debugger
-  //  }) 
 }  
 
   render(){
