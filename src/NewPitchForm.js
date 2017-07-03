@@ -15,14 +15,16 @@ class NewPitchForm extends Component {
       let config = {
         headers: {'Authorization': sessionStorage.token}
       };
-
+      // debugger
       let params = {
             'title': e.target.getElementsByTagName('input')[0].value,
             'description': e.target.getElementsByTagName('textarea')[0].value
       }
        axios.post('http://localhost:8000/pitches', querystring.stringify(params), config)
        .then(res => {
-         debugger
+         this.props.addPitch(res.data.pitch);
+         this.props.addCurrentUserPitch(res.data.pitch)
+         this.props.history.push('/home')
        }) 
 
   }

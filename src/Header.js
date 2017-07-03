@@ -24,7 +24,10 @@ class Header extends Component {
         return (
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink><Link to='/pitches'>Home</Link></NavLink>
+                <NavLink><Link to='/home'>Home</Link></NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink><Link to='/pitches'>My pitches</Link></NavLink>
               </NavItem>
               <NavItem>
                 <NavLink><Link to='/pitches/new'>Add pitch</Link></NavLink>
