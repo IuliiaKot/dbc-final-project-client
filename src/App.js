@@ -6,6 +6,8 @@ import Header from './Header';
 import Main from './Main';
 import {Container} from 'reactstrap';
 import axios from 'axios';
+// import {Pusher}  from './pusher';
+
 
 
 class App extends Component {
@@ -52,6 +54,20 @@ class App extends Component {
       .then(res => {
         this.setState({user_pitches: res.data.pitches})
     })  
+  }
+
+
+  componentWillMount(){
+     var pusher = new window.Pusher('20fb73b600aa67a0cafa', {
+      cluster: 'us2',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(data.message);
+    });
+    // debugger
+    // this.channel = this.pusher.subscribe('my-event')
   }
 
   render() {
